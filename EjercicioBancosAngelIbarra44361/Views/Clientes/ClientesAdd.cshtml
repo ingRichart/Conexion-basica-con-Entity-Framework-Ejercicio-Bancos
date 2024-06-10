@@ -1,0 +1,36 @@
+@model ClientesModel;
+@{
+    ViewData["Title"] = "Alta de Clientes";
+}
+ <div class="text-center">
+<h1 class="display-2">Alta de Clientes</h1>
+</div>
+<div asp-validation-summary="All" class="text-danger"></div>
+
+
+ <form asp-controller="Clientes" asp-action="ClientesAdd">
+
+
+ <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="nombre" name="Name" placeholder="Escriba el nombre del cliente:" />
+    </div>
+    <div class="mb-3">
+        <label for="nombre" class="form-label">Apellido</label>
+        <input type="text" class="form-control" id="nombre" name="apellido" placeholder="Escriba el apellido del cliente:" />
+    </div>
+     <div class="mb-3">
+     <label for="nombre" class="form-label">Direccion</label>
+        <input type="text" class="form-control" id="direccion" name="Direccion" placeholder="Escriba la dirección:" />
+    </div>
+     <div class="mb-3">
+      <label for="nombre" class="form-label">Telefono</label>
+        <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Escriba el telefono:" />
+    </div>
+      <div class="mb-3">
+      <label for="nombre" class="form-label">Email</label>
+        <input type="text" class="form-control" id="email" name="email" placeholder="Escriba el email:" />
+    </div>
+    <button type="submit" class="btn btn-primary mb-3">Guardar</button>
+<a asp-controller="Clientes" asp-action="ClientesList"class="btn btn-danger mb-3">Regresar</a>
+ </form>

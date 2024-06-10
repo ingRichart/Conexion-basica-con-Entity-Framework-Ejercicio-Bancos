@@ -1,0 +1,53 @@
+@model IEnumerable<BancosModel> 
+
+@{
+    ViewData["Title"] = "Listado de Bancos";
+}
+
+<div class="text-center">
+<h1 class="display-2">Listado de Bancos</h1>
+<a asp-controller="Bancos" asp-action="BancosAdd" class="btn btn-primary mb-3"> Agregar Banco </a>
+</div>
+<table class="table">  
+    <thead>
+<tr>
+    <th>Acciones </th>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Dirección</th>
+    <th>Telefono</th>
+    <th>Email</th>
+</tr>
+
+    </thead>
+<tbody>
+@foreach(var bancos in Model)
+{
+    <tr>
+        <td>
+<a class="btn btn-primary" asp-controller="Bancos" asp-action="BancosEdit" asp-route-id="@bancos.Id">Editar</a>
+<a class="btn btn-danger" asp-controller="Bancos" asp-action="BancosDeleted" asp-route-id="@bancos.Id">Borrar</a>
+        </td>
+        <td>
+            @bancos.Id
+        </td>
+          <td>
+            @bancos.Name
+        </td>
+          <td>
+            @bancos.Direccion
+        </td>
+          <td>
+            @bancos.telefono
+        </td>
+          <td>
+            @bancos.email
+        </td>
+    </tr>
+}
+</tbody>
+
+<tfoot>
+
+</tfoot>
+</table>

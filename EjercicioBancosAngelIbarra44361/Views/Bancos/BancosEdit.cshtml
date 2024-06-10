@@ -1,0 +1,30 @@
+@model BancosModel;
+@{
+    ViewData["Title"] = "Editar el banco";
+}
+ 
+  <div class="text-center">
+<h1 class="display-2">Editar la información del Banco: @Model.Name</h1>
+</div>
+<div asp-validation-summary="All" class="text-danger"></div>
+
+ <form asp-controller="Bancos" asp-action="BancosEdit">
+
+
+ <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="nombre" name="Name" placeholder="Escriba el banco:" />
+    </div>
+     <label for="nombre" class="form-label">Direccion</label>
+        <input type="text" class="form-control" id="direccion" name="Direccion" placeholder="Escriba la dirección:" />
+    </div>
+      <label for="nombre" class="form-label">Telefono</label>
+        <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Escriba el telefono:" />
+    </div>
+      <label for="nombre" class="form-label">Email</label>
+        <input type="text" class="form-control" id="email" name="email" placeholder="Escriba el email:" />
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+<a asp-controller="Bancos" asp-action="BancosList" class="btn btn-secundary mb-3"> Regresar</a>
+ <button type="submit" class="btn btn-secundary">Cancelar</button>
+ </form>

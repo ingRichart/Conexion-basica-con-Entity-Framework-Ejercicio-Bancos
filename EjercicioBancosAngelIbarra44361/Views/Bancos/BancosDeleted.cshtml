@@ -1,0 +1,13 @@
+@model BancosModel;
+@{
+    ViewData["Title"] = "Borrar el banco";
+}
+ 
+  <div class="mb-3">
+¿Estas seguro de que deseas borrar el banco @Model.Name ?
+</div>
+
+<form asp-controller="Bancos" asp-action="BancosDeleted">
+<button type="submit" class ="btn btn-danger">Borrar</button>
+<a class="btn btn-secundary" asp-asp-controller="Bancos" asp-action="BancosList" >Regresar </a>
+</form>

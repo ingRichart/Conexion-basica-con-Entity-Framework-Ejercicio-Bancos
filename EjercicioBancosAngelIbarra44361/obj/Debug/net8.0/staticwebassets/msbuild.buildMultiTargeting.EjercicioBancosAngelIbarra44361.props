@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\EjercicioBancosAngelIbarra44361.props" />
+</Project>
