@@ -90,6 +90,8 @@ public class ClientesController : Controller
     }
         return View(model);
     }
+    
+    [HttpGet]
     public IActionResult ClientesDeleted(Guid Id)
     {
        
@@ -114,26 +116,16 @@ public class ClientesController : Controller
     [HttpPost]
     public IActionResult ClientesDeleted(ClientesModel model)
     {
-        if (ModelState.IsValid)
+        var clientesBorrado = _context.Clientes.FirstOrDefault(c => c.Id == model.Id);
+    if (clientesBorrado == null)
     {
-        Clientes clientesborrado = this._context.Clientes.Where(c => c.Id == model.Id).FirstOrDefault();
-        if (clientesborrado == null)
-        {
-            return RedirectToAction("ClientesList");
-        }
-        clientesborrado.Name = model.Name;
-        clientesborrado.apellido=model.apellido;
-        clientesborrado.Direccion = model.Direccion;
-        clientesborrado.telefono = model.telefono;
-        clientesborrado.email = model.email;
-
-        this._context.Clientes.Remove(clientesborrado);
-        this._context.SaveChanges();
-
         return RedirectToAction("ClientesList");
-
     }
-        return View(model);
+
+    _context.Clientes.Remove(clientesBorrado);
+    _context.SaveChanges();
+
+    return RedirectToAction("ClientesList");
     }
    
       
