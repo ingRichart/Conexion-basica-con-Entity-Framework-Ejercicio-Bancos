@@ -2,48 +2,40 @@
 
 @{
     ViewData["Title"] = "Listado de Clientes";
+    int numero=0;
 }
 
 <div class="text-center">
 <h1 class="display-2">Listado de Clientes</h1>
 <a asp-controller="Clientes" asp-action="ClientesAdd" class="btn btn-primary mb-3"> Agregar Cliente </a>
 </div>
-<table class="table">  
-    <thead>
+<table class="table table-striped">  
+ <thead>
 <tr>
-    <th>Acciones </th>
-    <th>ID</th>
-    <th>Nombre</th>
-    <th>Apellidos</th>
-    <th>Dirección</th>
-    <th>Telefono</th>
-    <th>Email</th>
+    <th scope="col">#</th>
+    <th scope="col">Nombre</th>
+    <th scope="col">Apellidos</th>
+    <th scope="col">Dirección</th>
+    <th scope="col">Teléfono</th>
+    <th scope="col">Email</th>
+    <th scope="col">Acciones </th>
 </tr>
 
     </thead>
 <tbody>
 @foreach(var clientes in Model)
 {
+    numero++;
     <tr>
-        <td>
+        <th scope="row">@numero</th>
+        <td>@clientes.Name</td>
+        <td>@clientes.apellido</td>
+        <td> @clientes.Direccion </td>
+        <td>@clientes.telefono</td>
+        <td>@clientes.email</td>
+         <td>
 <a class="btn btn-primary" asp-controller="Clientes" asp-action="ClientesEdit" asp-route-id="@clientes.Id">Editar</a>
 <a class="btn btn-danger" asp-controller="Clientes" asp-action="ClientesDeleted" asp-route-id="@clientes.Id">Borrar</a>
-        </td>
-        <td>@clientes.Id</td>
-        <td>
-            @clientes.Name
-        </td>
-        <td>@clientes.apellido</td>
-          <td>
-           
-          <td>
-            @clientes.Direccion
-        </td>
-          <td>
-            @clientes.telefono
-        </td>
-          <td>
-            @clientes.email
         </td>
     </tr>
 }

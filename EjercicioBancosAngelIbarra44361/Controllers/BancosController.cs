@@ -110,26 +110,16 @@ public class BancosController : Controller
     [HttpPost]
     public IActionResult BancosDeleted(BancosModel model)
     {
-        if (ModelState.IsValid)
+       Bancos bancosBorrado = _context.Bancos.FirstOrDefault(c => c.Id == model.Id);
+    if (bancosBorrado == null)
     {
-        Bancos bancoborrado = this._context.Bancos.Where(b => b.Id == model.Id).FirstOrDefault();
-        if (bancoborrado == null)
-        {
-            return RedirectToAction("BancosList");
-        }
-
-        bancoborrado.Name = model.Name;
-        bancoborrado.Direccion = model.Direccion;
-        bancoborrado.telefono = model.telefono;
-        bancoborrado.email = model.email;
-
-        this._context.Bancos.Remove(bancoborrado);
-        this._context.SaveChanges();
-
         return RedirectToAction("BancosList");
-
     }
-        return View(model);
+
+    _context.Bancos.Remove(bancosBorrado);
+    _context.SaveChanges();
+
+    return RedirectToAction("BancosList");
     }
    
       

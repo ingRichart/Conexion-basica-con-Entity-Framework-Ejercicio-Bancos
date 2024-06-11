@@ -2,46 +2,38 @@
 
 @{
     ViewData["Title"] = "Listado de Bancos";
+    int numero=0;
 }
 
 <div class="text-center">
 <h1 class="display-2">Listado de Bancos</h1>
 <a asp-controller="Bancos" asp-action="BancosAdd" class="btn btn-primary mb-3"> Agregar Banco </a>
 </div>
-<table class="table">  
+<table class="table table-striped">  
     <thead>
 <tr>
-    <th>Acciones </th>
-    <th>ID</th>
-    <th>Nombre</th>
-    <th>Dirección</th>
-    <th>Telefono</th>
-    <th>Email</th>
+    <th scope="col">#</th>
+    <th scope="col">Nombre</th>
+    <th scope="col">Dirección</th> 
+    <th scope="col">Teléfono</th>
+    <th scope="col">Email</th>
+    <th scope="col">Acciones </th>
 </tr>
 
     </thead>
 <tbody>
 @foreach(var bancos in Model)
 {
+    numero++;
     <tr>
-        <td>
+        <th scope="row">@numero</th>
+        <td> @bancos.Name</td>
+        <td>@bancos.Direccion</td>
+        <td>@bancos.telefono</td>
+        <td>@bancos.email</td>
+         <td>
 <a class="btn btn-primary" asp-controller="Bancos" asp-action="BancosEdit" asp-route-id="@bancos.Id">Editar</a>
 <a class="btn btn-danger" asp-controller="Bancos" asp-action="BancosDeleted" asp-route-id="@bancos.Id">Borrar</a>
-        </td>
-        <td>
-            @bancos.Id
-        </td>
-          <td>
-            @bancos.Name
-        </td>
-          <td>
-            @bancos.Direccion
-        </td>
-          <td>
-            @bancos.telefono
-        </td>
-          <td>
-            @bancos.email
         </td>
     </tr>
 }

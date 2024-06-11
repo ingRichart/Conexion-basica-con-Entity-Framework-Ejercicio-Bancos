@@ -116,7 +116,7 @@ public class ClientesController : Controller
     [HttpPost]
     public IActionResult ClientesDeleted(ClientesModel model)
     {
-        var clientesBorrado = _context.Clientes.FirstOrDefault(c => c.Id == model.Id);
+        Clientes clientesBorrado = _context.Clientes.FirstOrDefault(c => c.Id == model.Id);
     if (clientesBorrado == null)
     {
         return RedirectToAction("ClientesList");
