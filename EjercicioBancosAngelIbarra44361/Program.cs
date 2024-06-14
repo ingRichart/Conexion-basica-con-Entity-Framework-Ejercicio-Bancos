@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(opc => opc.UseSqlServer("name=AngelIbarraSQL"));
 
+//Revisado por RAEH
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
